@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import siteMetadata from '@/data/siteMetadata'
 import { Inter } from 'next/font/google'
@@ -195,7 +197,7 @@ const Wrapper = ({ children }: Props) => {
       found_access_token &&
         HTTPClient.getInstance().client.delete(`user_access_token/${found_access_token.id}`, auth),
     ])
-
+    console.log('res[0].data.token :::>>', res[0].data.token)
     setAuthToken(res[0].data.token)
     setEmail(username)
     Cookies.set('auth_token', res[0].data.token)

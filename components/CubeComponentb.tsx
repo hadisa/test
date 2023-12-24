@@ -6,7 +6,7 @@ const CubeComponent = () => {
   return (
     <div className="relative flex h-full w-full items-center justify-center">
       <iframe
-        src={process.env.CUBE_LINK}
+        src={process.env.CUBE_URL}
         sandbox="allow-same-origin allow-scripts"
         width="100%"
         title="Description of the content or purpose of the iframe"
