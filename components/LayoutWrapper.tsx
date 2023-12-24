@@ -175,7 +175,7 @@ const Wrapper = ({ children }: Props) => {
   }
 
   const loginCheck = async (username: string, password: string) => {
-    console.log('email', username)
+    console.log('email ==== >>>', username)
     const auth = {
       auth: {
         username,
