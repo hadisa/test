@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import ZammadApi from '../../../lib/zammad'
 import { headers } from 'next/headers'
 import { writeFile } from 'fs/promises'

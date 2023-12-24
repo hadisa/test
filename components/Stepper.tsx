@@ -1,18 +1,18 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 'use client'
-import React, { useEffect, useState, useRef } from 'react'
+import Ambulance from '@/data/ambulance.svg'
+import Beaker from '@/data/beaker.svg'
+import Clinic from '@/data/clinic.svg'
 import Folder from '@/data/folder.svg'
 import Medicine from '@/data/medicine.svg'
-import Ambulance from '@/data/ambulance.svg'
-import Clinic from '@/data/clinic.svg'
-import Beaker from '@/data/beaker.svg'
 import stepperData from '@/data/stepperData '
-import SplashHeader from './SplashHeader'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import Footer from './Footer'
+import SplashHeader from './SplashHeader'
 const Stepper = ({ checkerRoute }) => {
-  const [isVisible, setIsVisible] = useState(true)
+  // const [isVisible, setIsVisible] = useState(true)
   const router = useRouter()
 
   return (
