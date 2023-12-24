@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import ZammadApi from '../../../lib/zammad'
 import { headers } from 'next/headers'
-import { writeFile } from 'fs/promises'
-import path from 'path'
+import ZammadApi from '../../../lib/zammad'
 
 const cubeContext = {
   securityContext: {
