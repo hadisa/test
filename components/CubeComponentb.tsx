@@ -5,7 +5,7 @@ const CubeComponent = () => {
   const loginRef = useRef()
   return (
     <div className="relative flex h-full w-full items-center justify-center">
-      <iframe
+      {/* <iframe
         src={process.env.CUBE_URL}
         sandbox="allow-same-origin allow-scripts"
         width="100%"
@@ -14,8 +14,10 @@ const CubeComponent = () => {
         style={{ border: 0 }}
         loading="lazy"
         allowTransparency={true}
-        allowFullScreen={true}
-      />
+        allowFullS
+        creen={true}
+      /> */}
+      Hi
     </div>
   )
 }
