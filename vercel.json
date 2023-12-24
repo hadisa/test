@@ -1,3 +1,14 @@
 {
-  "routes": [{ "src": "/api/(.*)", "dest": "/api/proxy.js" }]
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "http://95.217.3.89:3000/api/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "test-j51s0t30u-hadisa.vercel.app"
+        }
+      ]
+    }
+  ]
 }
