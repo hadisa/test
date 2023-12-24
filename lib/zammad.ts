@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Import necessary modules and types
 import axios, { AxiosInstance, AxiosResponse } from 'axios'
 import crypto from 'crypto'
