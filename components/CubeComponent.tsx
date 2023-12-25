@@ -28,7 +28,7 @@ const CubeComponent = () => {
 
   return (
     <div className="relative flex h-full w-full items-center justify-center">
-      {/* <iframe
+      <iframe
         id="da-iframe"
         src={CUBE_URL}
         title="this is cube chart"
@@ -40,8 +40,7 @@ const CubeComponent = () => {
         ref={frameRef}
         height={size.height}
         onLoad={onLoad}
-      /> */}
-      Hi
+      />
     </div>
   )
 }
