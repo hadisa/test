@@ -2,8 +2,8 @@
 import React, { createContext, useContext, useState } from 'react'
 import initHeaderNavLinks from '@/data/headerNavLinks'
 export type HeaderNavLinks = {
-  href: string;
-  title: string;
+  href: string
+  title: string
 }[]
 
 interface AppContextProps {
@@ -23,7 +23,7 @@ interface AppContextProps {
   setEmail: React.Dispatch<React.SetStateAction<string>>
   currentStep: number
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>
-  headerNavLinks: HeaderNavLinks,
+  headerNavLinks: HeaderNavLinks
   setHeaderNavLinks: React.Dispatch<React.SetStateAction<HeaderNavLinks>>
 }
 

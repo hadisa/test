@@ -70,7 +70,7 @@ const ResetForm = ({ loginCheck }) => {
                   >
                     I accept the{' '}
                     <a
-                      className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                      className="dark:text-text-desin font-medium text-primary-600 hover:underline"
                       href="/#"
                     >
                       Terms and Conditions

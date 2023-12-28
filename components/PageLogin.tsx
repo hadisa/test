@@ -101,9 +101,8 @@ const PageLogin = ({ loginCheck, forgetPassHandler }) => {
                             // }}
                             style={{
                               background:
-                                'linear-gradient(to right,  #008000, #56a4d9, #3e95d0,  #008000)',
+                                'linear-gradient(to right,  #008000, #1CAC78, #1CAC78,  #008000)',
                             }}
-                           
                             type="submit"
                           >
                             Log in

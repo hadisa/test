@@ -36,6 +36,7 @@ module.exports = {
         // designColor: '#0093d4',
         // designColor: '#2563eb',
         designColor: '#008000',
+        designColorHover: '#328432',
         // red: '#5F9EA0',
         lightGreen: '#f5f6fb', //this is for backend color need to change name
         darkGreen: '#fff',
