@@ -80,7 +80,7 @@ const ResetForm = ({ loginCheck }) => {
               </div>
 
               <button
-                className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase bg-designColor leading-normal text-txtWhite "
+                className="mb-3 inline-block w-full rounded bg-designColor px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-txtWhite "
                 // style={{
                 //   background: 'linear-gradient(to right, #235475, #56a4d9, #3e95d0, #1495ea)',
                 // }}
