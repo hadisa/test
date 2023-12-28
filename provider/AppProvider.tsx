@@ -1,9 +1,9 @@
 'use client'
 import React, { createContext, useContext, useState } from 'react'
 import initHeaderNavLinks from '@/data/headerNavLinks'
-type HeaderNavLinks = {
-  href: string
-  title: string
+export type HeaderNavLinks = {
+  href: string;
+  title: string;
 }[]
 
 interface AppContextProps {
@@ -23,11 +23,11 @@ interface AppContextProps {
   setEmail: React.Dispatch<React.SetStateAction<string>>
   currentStep: number
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>
-  headerNavLinks: HeaderNavLinks
+  headerNavLinks: HeaderNavLinks,
   setHeaderNavLinks: React.Dispatch<React.SetStateAction<HeaderNavLinks>>
 }
 
-const Context = createContext<AppContextProps | null>(null)
+const Context = createContext<AppContextProps>({} as AppContextProps)
 
 export const AppProvider = ({ children }) => {
   const [hasTicket, setHasTicket] = useState(false)

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import ZammadApi from '../../../lib/zammad'
 import { headers } from 'next/headers'
 import { writeFile } from 'fs/promises'
@@ -9,16 +8,16 @@ const cubeContext = {
     // TODO: Change tenant_id
     tenant_id: 'undefined',
   },
-  contextToAppId: ({ securityContext }: any) => {
+  contextToAppId: ({ securityContext }: typeof cubeContext) => {
     return `CUBE_APP_${securityContext.tenant_id}`
   },
 
-  contextToOrchestratorId: ({ securityContext }: any) => {
+  contextToOrchestratorId: ({ securityContext }: typeof cubeContext) => {
     return `CUBE_APP_${securityContext.tenant_id}`
   },
 }
 
-const zammadApi = new ZammadApi(process.env.ZAMMAD_HOST as string, cubeContext)
+const zammadApi = new ZammadApi(process.env.NEXT_PUBLIC_ZAMMAD_HOST as string, cubeContext)
 
 const handler = async (req: Request) => {
   const headersList = headers()

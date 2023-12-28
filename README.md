@@ -7,7 +7,6 @@ graph TD
   D -->|Ticket Open| E[Display Steps based on Ticket State]
   E -->|Ticket Closed| F[Redirect to Blog]
 ```
-
 # Zammad Integration Documentation for Next.js Authentication
 
 ## Overview
@@ -16,8 +15,8 @@ This documentation guides you through the implementation of Zammad as an authent
 
 ### Zammad API Links:
 
-- [Zammad User API](https://docs.zammad.org/en/latest/api/user.html?highlight=user#me-current-user)
-- [Zammad Ticket Tags API](https://docs.zammad.org/en/latest/api/ticket/tags.html)
+* [Zammad User API](https://docs.zammad.org/en/latest/api/user.html?highlight=user#me-current-user)
+* [Zammad Ticket Tags API](https://docs.zammad.org/en/latest/api/ticket/tags.html)
 
 ## Scenario 1: No Welcome Ticket Created
 
@@ -69,8 +68,8 @@ GET /api/v1/tags?object=Ticket&o_id={ticket id}
 
 _Note: High-level details on how ticket state is determined from tags could be provided here._
 
-- **Open State**: Displays a message guiding users through required steps.
-- **Closed State**: Upon ticket closure, the form and steps are hidden. Users are redirected to the blog.
+* **Open State**: Displays a message guiding users through required steps.
+* **Closed State**: Upon ticket closure, the form and steps are hidden. Users are redirected to the blog.
 
 ## Implementation
 
@@ -117,45 +116,44 @@ Implement token handling mechanisms to manage user sessions securely. In the con
 
 ```typescript
 // Import necessary dependencies
-import axios, { AxiosInstance } from 'axios'
-import storage from './storage'
+import axios, { AxiosInstance } from 'axios';
+import storage from "./storage";
 
 // Create an axios instance
 export const api: AxiosInstance = axios.create({})
 
 // Configure the API with the base URL and authorization token
 export const configureApi = async (): Promise<void> => {
-  api.defaults.baseURL = `${await storage.get('url')}/api/v1/`
-  api.defaults.headers['Authorization'] = `Token token=${atob(await storage.get('token'))}`
+    api.defaults.baseURL = `${await storage.get("url")}/api/v1/`
+    api.defaults.headers["Authorization"] = `Token token=${atob(await storage.get("token"))}`
 }
 
 // Intercept API responses for handling errors
 api.interceptors.response.use(
-  (response) => {
-    return response
-  },
-  (error) => {
-    console.error(error)
-    throw error
-  }
+    (response) => {
+        return response
+    },
+    (error) => {
+        console.error(error);
+        throw error;
+    }
 )
 
 // Other API-related functions and classes...
 
 // Example usage in a component
 class MyComponent extends React.Component {
-  async componentDidMount() {
-    // Configure the API before making requests
-    await configureApi()
+    async componentDidMount() {
+        // Configure the API before making requests
+        await configureApi();
 
-    // Now, you can make requests using the configured API
-    api
-      .get('/some-endpoint')
-      .then((response) => console.log(response))
-      .catch((error) => console.error(error))
-  }
+        // Now, you can make requests using the configured API
+        api.get('/some-endpoint')
+            .then(response => console.log(response))
+            .catch(error => console.error(error));
+    }
 
-  // Other component logic...
+    // Other component logic...
 }
 ```
 
@@ -165,23 +163,22 @@ This TypeScript example assumes the presence of utility functions like `storage.
 
 As a valuable reference for the implementation of Zammad authentication in a Next.js application, you can explore the following open-source project:
 
-- [Zammad App Login Component](https://github.com/AddoSolutions/zammad-app/blob/master/src/Login.tsx)
-- [Zammad App API Configuration](https://github.com/AddoSolutions/zammad-app/blob/master/src/api.ts)
+* [Zammad App Login Component](https://github.com/AddoSolutions/zammad-app/blob/master/src/Login.tsx)
+* [Zammad App API Configuration](https://github.com/AddoSolutions/zammad-app/blob/master/src/api.ts)
 
 ### Key Points:
 
 1. **Login Component:**
-
-   - The [Login Component](https://github.com/AddoSolutions/zammad-app/blob/master/src/Login.tsx) demonstrates the login functionality for Zammad integration. Reviewing this component can provide insights into how authentication is handled in a React-based environment.
-
+    
+    * The [Login Component](https://github.com/AddoSolutions/zammad-app/blob/master/src/Login.tsx) demonstrates the login functionality for Zammad integration. Reviewing this component can provide insights into how authentication is handled in a React-based environment.
 2. **API Configuration:**
-
-   - The [API Configuration](https://github.com/AddoSolutions/zammad-app/blob/master/src/api.ts) file reveals how the application interacts with the Zammad API. Understanding this configuration is crucial for establishing a connection between your Next.js application and Zammad.
+    
+    * The [API Configuration](https://github.com/AddoSolutions/zammad-app/blob/master/src/api.ts) file reveals how the application interacts with the Zammad API. Understanding this configuration is crucial for establishing a connection between your Next.js application and Zammad.
 
 ### Implementation Considerations:
 
-- **Ionic Framework:**
-  - It's important to note that the referenced project is built using the Ionic framework, primarily designed for mobile app development. While the implementation details may not be directly transferable to a Next.js environment, studying the code can offer valuable insights into the overall authentication flow.
+* **Ionic Framework:**
+    * It's important to note that the referenced project is built using the Ionic framework, primarily designed for mobile app development. While the implementation details may not be directly transferable to a Next.js environment, studying the code can offer valuable insights into the overall authentication flow.
 
 ### Example:
 

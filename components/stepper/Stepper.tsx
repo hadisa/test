@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import stepperData from '@/data/stepperData '
 import { useRouter } from 'next/navigation'
@@ -16,10 +15,7 @@ const Stepper = ({ checkerRoute }) => {
   const router = useRouter()
   const appProviderContext = useAppProvider()
 
-  if (!appProviderContext) {
-    return <div>Loading...</div>
-  }
-
+  const { currentStep } = appProviderContext
   const stepRefs = [
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
@@ -27,14 +23,14 @@ const Stepper = ({ checkerRoute }) => {
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
   ]
-  const { currentStep } = appProviderContext
+
   useEffect(() => {
     if (currentStep === 5) {
       // If the current step is 5, navigate to another page using Next.js router
       router.push('/') // Replace '/your-target-page' with the actual target page path
       checkerRoute()
     }
-  }, [currentStep])
+  }, [currentStep, checkerRoute, router])
 
   const greens = [] as number[]
   const oranges = [] as number[]

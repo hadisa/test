@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import siteMetadata from '@/data/siteMetadata'
 import { Inter } from 'next/font/google'
@@ -27,12 +25,14 @@ const inter = Inter({
   subsets: ['latin'],
 })
 
+type Ticket = {
+  id: number
+  close_at: string
+}
+
 const Wrapper = ({ children }: Props) => {
   const appProviderContext = useAppProvider()
 
-  if (!appProviderContext) {
-    return <div>Loading...</div>
-  }
   const {
     login,
     setLogin,
@@ -59,6 +59,8 @@ const Wrapper = ({ children }: Props) => {
     const authToken = Cookies.get('auth_token')
     if (authToken && typeof authToken === 'string' && authToken.length) {
       setAuthToken(authToken)
+    } else {
+      return
     }
     const email = localStorage.getItem('email')
     if (email && typeof email === 'string' && email.length) {
@@ -87,10 +89,15 @@ const Wrapper = ({ children }: Props) => {
         setHeaderNavLinks(initHeaderNavLinks)
       }
     })()
-  }, [])
+  }, [setAuthToken, setEmail, setHeaderNavLinks])
+
+  const showStepper = useCallback(() => {
+    setShowSplash(true)
+    setHasTicket(true)
+  }, [setShowSplash, setHasTicket])
 
   const getTicketTags = useCallback(
-    async (ticket: any) => {
+    async (ticket: Ticket) => {
       const execute = async () => {
         const tagRes = await HTTPClient.getInstance().client.get(
           `tags?object=Ticket&o_id=${ticket.id}`,
@@ -119,7 +126,7 @@ const Wrapper = ({ children }: Props) => {
 
       showStepper()
     },
-    [authToken]
+    [authToken, setCurrentStep, showStepper]
   )
 
   useEffect(() => {
@@ -141,7 +148,7 @@ const Wrapper = ({ children }: Props) => {
           setLogin(true)
         }
         if (res.assets.Ticket) {
-          const ticket = Object.values(res.assets.Ticket)[0] as any
+          const ticket = Object.values(res.assets.Ticket)[0] as Ticket
           await getTicketTags(ticket)
         }
       }
@@ -149,7 +156,7 @@ const Wrapper = ({ children }: Props) => {
     return () => {
       clearTimeout(executeTimeout)
     }
-  }, [authToken && authToken.length && email && email.length])
+  }, [authToken, email, getTicketTags, setLogin])
 
   const checkRouteQuestion = async () => {
     const res = await HTTPClient.getInstance().client.post(
@@ -175,7 +182,6 @@ const Wrapper = ({ children }: Props) => {
   }
 
   const loginCheck = async (username: string, password: string) => {
-    console.log('email ==== >>>', username)
     const auth = {
       auth: {
         username,
@@ -197,7 +203,7 @@ const Wrapper = ({ children }: Props) => {
       found_access_token &&
         HTTPClient.getInstance().client.delete(`user_access_token/${found_access_token.id}`, auth),
     ])
-    console.log('res[0].data.token :::>>', res[0].data.token)
+
     setAuthToken(res[0].data.token)
     setEmail(username)
     Cookies.set('auth_token', res[0].data.token)
@@ -215,12 +221,6 @@ const Wrapper = ({ children }: Props) => {
 
   if (login === null) {
     return <div>Loading</div>
-  }
-
-  const showStepper = () => {
-    setShowSplash(true)
-    setHasTicket(true)
-    console.log('showStepper ::', showSplash)
   }
 
   const forgetPassHandler = () => {
