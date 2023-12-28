@@ -57,9 +57,9 @@ const ForgetPass = ({ loginCheck, forgetPassHandler }) => {
                 <div
                   className="flex items-center rounded-b-lg bg-designColor lg:w-6/12 lg:rounded-l-lg lg:rounded-br-none"
                   // style={{ backgroundImage: 'linear-gradient(to top, #00c6fb 0%, #005bea 100%);' }}
-                  style={{
-                    background: 'linear-gradient(to right, #235475, #56a4d9, #3e95d0, #1495ea)',
-                  }}
+                  // style={{
+                  //   background: 'linear-gradient(to right, #235475, #56a4d9, #3e95d0, #1495ea)',
+                  // }}
                 >
                   <div className=" px-4 py-6  md:mx-6 md:p-12">
                     <h4 className="mb-6 text-xl font-semibold text-txtWhite ">{`${siteInfo?.title}`}</h4>
@@ -104,11 +104,11 @@ const ForgetPass = ({ loginCheck, forgetPassHandler }) => {
                       <div className="mb-12 pb-1 pt-1 text-center">
                         <div className="w-full">
                           <button
-                            className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-txtWhite "
-                            style={{
-                              background:
-                                'linear-gradient(to right, #235475, #56a4d9, #3e95d0, #1495ea)',
-                            }}
+                            className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-txtWhite bg-designColor"
+                            // style={{
+                            //   background:
+                            //     'linear-gradient(to right, #235475, #56a4d9, #3e95d0, #1495ea)',
+                            // }}
                             type="submit"
                             onClick={loginCheck}
                           >

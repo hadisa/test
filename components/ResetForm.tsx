@@ -70,7 +70,7 @@ const ResetForm = ({ loginCheck }) => {
                   >
                     I accept the{' '}
                     <a
-                      className="dark:text-text-desin font-medium text-primary-600 hover:underline"
+                      className="dark:text-text-desin font-medium text-designColorHover hover:underline"
                       href="/#"
                     >
                       Terms and Conditions
@@ -80,10 +80,10 @@ const ResetForm = ({ loginCheck }) => {
               </div>
 
               <button
-                className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-txtWhite "
-                style={{
-                  background: 'linear-gradient(to right, #235475, #56a4d9, #3e95d0, #1495ea)',
-                }}
+                className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase bg-designColor leading-normal text-txtWhite "
+                // style={{
+                //   background: 'linear-gradient(to right, #235475, #56a4d9, #3e95d0, #1495ea)',
+                // }}
                 type="submit"
                 onClick={() => loginCheck()}
               >
