@@ -5,10 +5,11 @@ import SearchButton from './SearchButton'
 import ThemeSwitch from './ThemeSwitch'
 import { HeaderNavLinks, useAppProvider } from 'provider/AppProvider'
 import Cookies from 'js-cookie'
+import { useRouter } from 'next/navigation'
 
 const Header = () => {
   const appProviderContext = useAppProvider()
-
+  const router = useRouter()
   const { headerNavLinks } = appProviderContext || { headerNavLinks: [] as HeaderNavLinks }
 
   return (
@@ -41,6 +42,7 @@ const Header = () => {
                 onClick={() => {
                   if (link.title == 'logout') {
                     Cookies.remove('auth_token')
+                    router.push('/')
                     localStorage.removeItem('email')
                   }
                 }}
